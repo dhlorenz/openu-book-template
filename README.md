@@ -1,3 +1,4 @@
 openu-book-template
 ===================
-$Id$??
+$Id$
+Lyx template for writing Books at the Open University
