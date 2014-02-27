@@ -1,0 +1,244 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[book,a4paper,12pt]{book (Open University)}
+# Hebrew article textclass definition file.
+# Author: David H. Lorenz <lorenz@openu.ac.il>
+# Based on heb-article.layout by Dekel Tsur <dekel@math.tau.ac.il>
+# Few changes by Baruch Even <baruch.even@writeme.com>
+
+Format 35
+Input book
+
+Preamble
+\usepackage{theorem} % openu-book
+	\theorembodyfont{\upshape} % openu-book
+	\newtheorem{theorem}{\R{×ž×©×¤×˜}}[section] % openu-book
+	\AtBeginDocument{\make@lr\thetheorem} % openu-book
+%
+	\usepackage[cp1255]{inputenc}		% dhl openu-book
+	\usepackage[HE8,OT1]{fontenc}		% dhl openu-book
+	\usepackage[english,hebrew]{babel}	% dhl openu-book
+
+EndPreamble
+
+
+Style Theorem
+	Margin                First_Dynamic
+	LatexType             Environment
+	LatexName             theorem
+	NextNoIndent          1
+	LabelSep              xx
+	ParIndent             MMM
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           "Theorem #."
+	Font
+	  Shape               Up
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
+End
+
+
+Style Exercise1
+	CopyStyle             Theorem
+	LatexName             exercise
+	LabelString           "Exercise1 #."
+	Preamble
+		\newtheorem{exercise1}[theorem]{\R{úøâéì1}} % openu-book
+	EndPreamble
+End
+
+Style Exercise2
+	CopyStyle             Theorem
+	LatexName             exercise
+	LabelString           "Exercise2 #."
+	Preamble
+		\newtheorem{exercise2}[theorem]{\R{úøâéì2}} % openu-book
+	EndPreamble
+End
+
+
+Style Solution
+	CopyStyle             Theorem
+	LatexName             solution
+	LabelString           "Solution #."
+	Preamble
+		\newtheorem{solution}[theorem]{\R{úøâéì1}} % openu-book
+	EndPreamble
+End
+
+
+Style Hint
+	CopyStyle             Theorem
+	LatexName             myhint
+	LabelString           "Hint #."
+	Preamble
+		\newtheorem{myhint}[theorem]{\R{øîæ:}} % openu-book
+	EndPreamble
+End
+
+
+Style Lemma
+	CopyStyle             Theorem
+	LatexName             lemma
+	LabelString           "Lemma #."
+	Preamble
+		\newtheorem{lemma}[theorem]{\R{×œ×ž×”}} % openu-book
+	EndPreamble
+End
+
+
+Style Corollary
+	CopyStyle             Theorem
+	LatexName             corollary
+	LabelString           "Corollary #."
+	Preamble
+		\newtheorem{corollary}[theorem]{\R{×ž×¡×§× ×”}} % openu-book
+	EndPreamble
+End
+
+
+Style Claim
+	CopyStyle             Theorem
+	LatexName             claim
+	LabelString           "Claim #."
+	Preamble
+		\newtheorem{claim}[theorem]{\R{×˜×¢× ×”}} % openu-book
+	EndPreamble
+End
+
+
+Style Definition
+	CopyStyle             Theorem
+	LatexName             definition
+	LabelString           "Definition #."
+	Preamble
+		%\newtheorem{definition}[theorem]{\R{×”×’×“×¨×”}} % openu-book
+	EndPreamble
+End
+
+
+Style Remarks
+	CopyStyle             Theorem
+	LatexName             remark
+	LabelString           "Remarks #."
+	Preamble
+		%\newtheorem{remark}[theorem]{\R{×”×¢×¨×”}} % openu-book
+	EndPreamble
+End
+
+Style Important
+	CopyStyle             Theorem
+	LatexName             veryimportant
+	LabelString           "Important #."
+	Preamble
+		%\newtheorem{important}[theorem]{\R{×”×¢×¨×”}} % openu-book
+	EndPreamble
+	HTMLStyle
+		div.Doublebox {
+			border: double thick black;
+			padding: 0.5ex;
+		}
+	EndHTMLStyle
+End
+
+
+Style Proof
+	Margin                First_Dynamic
+	LatexType             Environment
+	LatexName             proof
+	NextNoIndent          1
+	LabelSep              xx
+	ParIndent             MMM
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           "Proof:"
+	EndLabelType          Filled_Box
+	Font
+	  Shape               Up
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
+	Preamble
+		\newenvironment{proof}%
+			{\R{\textbf{×”×•×›×—×”:}}}%
+			{\hfill\rule{2mm}{2mm}\par\vspace{2mm}}
+	EndPreamble
+End
+
+
+InsetLayout Box:Mybox
+	CopyStyle Box
+	LabelFont
+	  Color               foreground
+	  Size                Large
+	EndFont
+	MultiPar              true
+	HTMLStyle
+		div.Doublebox {
+			border: double thick black;
+			padding: 0.5ex;
+		}
+	EndHTMLStyle
+End
+
+
+# Input theorems-refprefix.inc
+# Reference prefixes for theorem environments
+
+Format 35
+
+IfStyle Theorem
+	RefPrefix thm
+End
+
+IfStyle Exercise1
+	RefPrefix exe1
+End
+
+IfStyle Exercise2
+	RefPrefix exe2
+End
+
+IfStyle solution
+	RefPrefix sol
+End
+
+IfStyle myhint
+	RefPrefix myhint
+End
+
+IfStyle Corollary
+	RefPrefix cor
+End
+
+IfStyle Lemma
+	RefPrefix lem
+End
+
+IfStyle Proposition
+	RefPrefix prop
+End
+
+IfStyle Aharoni
+	RefPrefix aharoni
+End
+

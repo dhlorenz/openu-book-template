@@ -1,0 +1,159 @@
+%%
+%% This is file `madrich.sty',
+%%
+%% Copyright (c) 2012 David H. Lorenz
+%%
+%% This file is for use with LaTeX.
+%% It may be distributed under the terms of the LaTeX Project Public
+%% License, as described in lppl.txt in the base LaTeX distribution.
+%% Either version 1.0 or, at your option, any later version.
+%%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{sty/madrich}
+                  [2011/07/15 v0.1c openu-book]
+
+
+%\usepackage{fancyhdr}
+%\newcommand{\NIKUD}[1]{\NotOK}
+%\usepackage{sty/nikud}
+\usepackage{listings}
+%\usepackage{sty/code}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{verbatim}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{marginnote}
+\usepackage{framed}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbding} %%%
+\usepackage{setspace}
+\doublespacing
+%\singlespacing
+%\onehalfspacing
+\selectlanguage{hebrew} 
+
+\setlength{\headheight}{15.5pt} % --dh
+\setlength{\headsep}{25pt} %6 --dh
+
+%%%
+%%% theorems
+%%%
+\newcommand{\qed}{$\Box$}
+\newcommand{\readbook}[1]{\medskip \begin{center}
+\framebox{#1}\end{center}\medskip}
+\newenvironment{hproof}[1][\proofname]{\par
+  \normalfont \relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape \bfseries
+    #1{.}]\ignorespaces
+}{%
+  \hfill \qed\endtrivlist%
+}
+\providecommand{\proofname}{\R{\hebhe\hebvav\hebkaf\hebhet\hebhe}}
+
+%%%
+%%% exercise
+%%%
+\newcounter{exercise}[chapter]
+\newenvironment{exercise}{\exer}{\endexer}
+\renewcommand{\theexercise}{{$\normalfont\textbf{\thechapter.\arabic{exercise}}$}}
+\newcommand{\exer}[1][default] {\par\smallskip\noindent\refstepcounter{exercise}\hbox{\bfseries \R{\exerbullet\exername}~\theexercise$\;$%
+\index{\exername}
+\ifthenelse{\equal{#1}{default}}{}{)#1(} }%
+\ignorespaces\exerstyle}
+\def\endexer{\par\smallskip}
+\newcommand{\exerbullet}{*}
+\newcommand{\exerstyle}{\fontfamily{david}\selectfont}
+\providecommand{\exername}{\hebtav\hebresh\hebgimel\hebyod\heblamed}
+\providecommand{\solutionbullet}{}
+\providecommand{\solutionname}{\hebpe\hebtav\hebresh\hebvav\hebfinalnun}
+\newenvironment{solution}{\par\medskip\noindent{ \bfseries
+	\R{\solutionbullet\solutionname.}}\ignorespaces\solutionfont}
+        {\hfill\solutionqed\par\medskip}
+\newcommand{\solutionqed}{}
+\newcommand{\solutionfont}{\fontfamily{nachlieli}\selectfont}
+
+\newenvironment{myhint}{\par\medskip\noindent{ \bfseries 
+       \R{\hintbullet\hebresh\hebmem ז}:}\ignorespaces\hintstyle}
+        {\hfill\hintqed\par\medskip}
+\newcommand{\hintbullet}{}
+\newcommand{\hintqed}{}
+\newcommand{\hintstyle}{\fontfamily{david}\selectfont}
+
+%%%
+%%% definition
+%%%
+\newcounter{definition}[chapter]
+\renewcommand{\thedefinition}{\L{\selectlanguage{hebrew}\thechapter.\arabic{definition}}}
+\newcommand{\defn}[1][default] {\par\medskip\noindent\refstepcounter{definition}\hbox{\bfseries \R{\hebhe\hebgimel\hebdalet\hebresh\hebhe}~\thedefinition\ \ifthenelse{\equal{#1}{default}}{}{)#1(} }%
+\ignorespaces\definitionfont }
+\def\enddefn{\hfill$\definitionqed$\par\medskip}
+\newenvironment{definition}{\defn}{\enddefn}
+\newcommand{\definitionqed}{}
+\newcommand{\definitionfont}{\fontfamily{ellinia}\selectfont}
+
+%%%
+%%% example, remark
+%%%
+\definecolor{shadecolor}{gray}{0.95}
+\newenvironment{myexample}{\paragraph{\R{{\hebdalet\hebvav\hebgimel\hebmem\hebalef}:}}}{\hfill\exampleqed
+\par\medskip}
+\newcommand{\exampleqed}{}
+\newenvironment{remark}{\snugshade\noindent\remarkbullet\remarkfont}{\hfill\remarkqed\par\medskip\endsnugshade}
+\newcommand{\remarkbullet}{}
+\newcommand{\remarkqed}{}
+\newcommand{\remarkfont}{\fontfamily{yad}\fontsize{11}{11}\selectfont} %\footnotesize}
+\providecommand{\remarkname}{\R{{\hebhe\hebayin\hebresh\hebhe}:}}
+
+\newenvironment{veryimportant}{\framed\noindent\importantbullet\importantfont}{\hfill\importantqed\endframed\par\medskip}
+\newcommand{\importantbullet}{}
+\newcommand{\importantqed}{}
+\newcommand{\importantfont}{\bf}
+\providecommand{\importantname}{\R{{\hebhe\hebayin\hebresh\hebhe}:}}
+
+\newenvironment{algoproblem}[1]{\paragraph{בעיה אלגוריתמית:}#1.\begin{compactdesc}}{\end{compactdesc}\smallskip}
+\newcommand{\algitem}[1]{\item[\textbf{#1}:]}
+
+\newcommand{\hebref}[1]{\L{\ref{#1}}}
+
+\DeclareMathOperator{\opt}{OPT}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\dist}{dist}
+
+\newcommand{\dhl}[1]{\L{$\ll$#1---DHL.$\gg$\marginpar{DHL}}}
+\renewcommand{\dhl}[1]{\L{ \marginpar{\fontfamily{yad}\selectfont #1} }}
+
+%\newcommand{\cvslog}[3]{\fancyfoot[C]{\tiny\R{#1.#2}}}
+\newcommand{\cvslog}[3]{ERROR IN FILE}
+
+%%%
+%%% Listings
+%%%
+%?\lstset{language=scheme}
+
+\newcommand{\openulogo}{\L{\includegraphics[scale=0.25]{figs/openu_logo_color}}}
+\newcommand{\seebookbullet}{\mbox{\HandLeft{}}}
+\newcommand{\seebookqed}{\mbox{\HandRight{}}}
+
+\providecommand{\pgname}{\hebayin\hebmem'}
+\providecommand{\bookname}{\hebbet\hebsamekh\hebpe\hebresh}
+\newcommand{\REFBOOK}[1]{\marginpar[\footnotesize$\seebookbullet$\fbox{\R{\pgname}~{$#1$}}]{\footnotesize\fbox{\R{\pgname}~{$#1$}}$\seebookqed$}}
+
+%%%
+%%% DEFINITION
+%%%
+%%%\newcommand{\imean}[1]{\ensuremath\left\lceil #1 \right\rceil}
+%%%\newcommand{\imeanit}[2]{\ensuremath\left\lceil #1 \right\rceil}
+%%%\newcommand{\cons}[2]{\ensuremath\lstt{#1\texttt{.}#2}}
+
+%\renewcommand{\partname}{\hebyod\hebayin\hebyod\hebmem}
+
+\newcommand{\TODO}[1]{\framebox[1\columnwidth]{\parbox{.95\columnwidth}{\textcolor{red}{\index{נותר לעשות}\small\textsf{נותר לעשות: #1}}}}}
+\newcommand{\extrabullet}{\mbox{$\star$}}
+\newcommand{\extraqed}{\mbox{$\star$}}
+
+%\input{sty/config.sty}
+
