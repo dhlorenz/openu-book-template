@@ -1,2 +1,5 @@
 README.* ident
-book-main.* ident
+*.md ident
+*.lyx ident
+*.layout ident
+*.sty ident
