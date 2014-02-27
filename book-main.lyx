@@ -5,8 +5,6 @@
 \textclass openu-book
 \begin_preamble
 \usepackage{openu-book}
-%\input{sty/empty}
-%\usepackage{sty/sbe1}
 %\cvslog{Pre $RCSfile: book-main.lyx,v $}{$Revision: 1.1 $}{$Id: book-main.lyx,v 1.1 2013/03/06 12:59:32 lorenz Exp $}
 \end_preamble
 \use_default_options false
