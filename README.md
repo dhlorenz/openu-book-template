@@ -1,4 +1,7 @@
 openu-book-template
 ===================
-$Id$
-Lyx template for writing Books at the Open University
+http://openuniversity.github.io/openu-book-template/
+(Ver.$Id$)
+
+
+Lyx template for writing textbooks at the Open University
