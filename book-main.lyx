@@ -11,8 +11,8 @@
 \master book-main.lyx
 \maintain_unincluded_children false
 \language hebrew
-\language_package default
-\inputencoding auto
+\language_package babel
+\inputencoding cp1255
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -89,6 +89,10 @@
 \series bold
 ד.
  לורנץ
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Date

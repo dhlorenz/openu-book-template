@@ -1,5 +1,5 @@
 %%
-%% This is file `madrich.sty',
+%% This is file `openu-book.sty',
 %%
 %% Copyright (c) 2012 David H. Lorenz
 %%
@@ -9,13 +9,16 @@
 %% Either version 1.0 or, at your option, any later version.
 %%
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{sty/madrich}
+\ProvidesPackage{openu-book}
                   [2011/07/15 v0.1c openu-book]
 
 
 %\usepackage{fancyhdr}
 %\newcommand{\NIKUD}[1]{\NotOK}
 %\usepackage{sty/nikud}
+%\usepackage[T1]{cp1255}
+%\usepackage[cp1255]{inputenc}
+%\DeclareFontShape{HE8}{david}{m}{n}{<-> [1.2] david}{}
 \usepackage{listings}
 %\usepackage{sty/code}
 \usepackage{paralist}
@@ -27,7 +30,7 @@
 \usepackage{framed}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{bbding} %%%
+%\usepackage{bbding}%%%%
 \usepackage{setspace}
 \doublespacing
 %\singlespacing
@@ -105,7 +108,8 @@
 \newenvironment{remark}{\snugshade\noindent\remarkbullet\remarkfont}{\hfill\remarkqed\par\medskip\endsnugshade}
 \newcommand{\remarkbullet}{}
 \newcommand{\remarkqed}{}
-\newcommand{\remarkfont}{\fontfamily{yad}\fontsize{11}{11}\selectfont} %\footnotesize}
+%\newcommand{\remarkfont}{\fontfamily{yad}\fontsize{11}{11}\selectfont} %\footnotesize}
+\newcommand{\remarkfont}{\fontfamily{david}\fontsize{12}{12}\selectfont} %\footnotesize}
 \providecommand{\remarkname}{\R{{\hebhe\hebayin\hebresh\hebhe}:}}
 
 \newenvironment{veryimportant}{\framed\noindent\importantbullet\importantfont}{\hfill\importantqed\endframed\par\medskip}
